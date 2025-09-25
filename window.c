@@ -27,8 +27,9 @@ int open_w(Windows * windows, int input){
     }
     newNode->data = input;
     newNode->next = windows->list->head;
+    // insert top of stack
     windows->list->head = newNode;
-
+    printf("%d\n", input);
     return input;
 }
 /*
@@ -52,6 +53,13 @@ int close_w(Windows * windows, int input){
     if(current->data == input){
         windows->list->head = current->next;
         free(current);
+        // check if nodes left
+        if(windows->list->head == NULL){
+            printf("-\n");
+        }
+        else{
+        printf("%d\n", windows->list->head->data);
+        }
         return input;
     }
     // search for the node to be closed
@@ -64,6 +72,7 @@ int close_w(Windows * windows, int input){
     if(next){
         current->next = next->next;
         free(next);
+        printf("%d\n", windows->list->head->data);
         return input;
     }
     printf("Window %d not found\n", input);
@@ -101,6 +110,7 @@ int switch_w(Windows * windows, int input){
         int temp = head->data;
         head->data = current->data;
         current->data = temp;
+        printf("%d\n", input);
         return input;
     }
     printf("Window %d not found\n", input);
@@ -111,7 +121,8 @@ int switch_w(Windows * windows, int input){
 free_w: Frees all memory associated with the Windows structure.
 */
 void free_w(Windows * windows){
-    if(!windows->list) return;
+    // if no windows structure, nothing to free
+    if(!windows || !windows->list) return;
     Node * current = windows->list->head;
     Node * next;
     while(current){
