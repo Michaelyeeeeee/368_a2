@@ -54,10 +54,7 @@ int close_w(Windows * windows, int input){
         windows->list->head = current->next;
         free(current);
         // check if nodes left
-        if(windows->list->head == NULL){
-            printf("-\n");
-        }
-        else{
+        if(windows->list->head != NULL){
         printf("%d\n", windows->list->head->data);
         }
         return input;
