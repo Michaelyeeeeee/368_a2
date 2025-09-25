@@ -94,6 +94,7 @@ int switch_w(Windows * windows, int input){
     // head node
     Node * head = windows->list->head;
     if(head->data == input){
+        printf("%d\n", input);
         return input;
     }
     // node to be switched
