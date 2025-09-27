@@ -57,9 +57,6 @@ int close_w(Windows * windows, int input){
         if(windows->list->head != NULL){
         printf("%d\n", windows->list->head->data);
         }
-        else{
-            printf("\n");
-        }
         return input;
     }
     // search for the node to be closed
