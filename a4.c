@@ -3,11 +3,14 @@
 #include "window.h"
 
 int main() {
+    // buffer for command
     char command[10];
+    // int for window num
     int input;
     Windows *windows = (Windows *)malloc(sizeof(Windows));
     windows->list = NULL;
     
+    // gets initial input
     scanf("%s %d", command, &input);
     if(command[0] == 'o'){
         open_w(windows, input);
@@ -15,6 +18,7 @@ int main() {
     else{
         printf("Invalid command\n");
     }
+    // get next inputs
     while(windows->list && windows->list->head){
         /*
         Node * current = windows->list->head;

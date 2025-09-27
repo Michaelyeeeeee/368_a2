@@ -113,6 +113,8 @@ int switch_w(Windows * windows, int input){
         current->next = head;
         printf("%d\n", input);
         return input;
+
+        // incorrect switch
         /*
         int temp = head->data;
         head->data = current->data;
