@@ -16,14 +16,14 @@ int main() {
         printf("Invalid command\n");
     }
     while(windows->list && windows->list->head){
-        /*
+        
         Node * current = windows->list->head;
         while(current){
             printf("%d ", current->data);
             current = current->next;
         }
         printf("\n");
-        */
+        
         scanf("%s %d", command, &input);
         if(command[0] == 'o'){
             open_w(windows, input);

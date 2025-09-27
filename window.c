@@ -99,17 +99,27 @@ int switch_w(Windows * windows, int input){
     }
     // node to be switched
     Node * current = windows->list->head;
+    Node * pre = NULL;
     // find input in list
     while(current && current->data != input){
+        pre = current;
         current = current->next;
     }
     // if found, swap data with head
     if(current){
+        pre->next = current->next;
+        Node * head = windows->list->head;
+        windows->list->head = current;
+        current->next = head;
+        printf("%d\n", input);
+        return input;
+        /*
         int temp = head->data;
         head->data = current->data;
         current->data = temp;
         printf("%d\n", input);
         return input;
+        */
     }
     printf("Window %d not found\n", input);
     return -1;
